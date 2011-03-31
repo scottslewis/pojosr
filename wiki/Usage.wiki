@@ -44,7 +44,7 @@ public interface PojoServiceRegistry {
 }}}
 = As a OSGi "light" framework =
 
-Either use the PojoServiceRegistry with bundles form the classpath installed and started by using the provided classpathscanner like this:
+Either use the PojoServiceRegistry with bundles form the classpath installed and started by using the provided classpathscanner like this (or standalone):
 
 {{{
 Map config = new HashMap();
@@ -58,10 +58,10 @@ PojoServiceRegistry registry = loader.iterator().next().newPojoServiceRegistry(c
 
 = Standalone = 
 
-A main method is provided as well e.g. the following gives us working gogo shell by just putting the gogo bundles on the classpath and running the framework,
+A main method is provided as well e.g. the following gives us a working gogo shell by just putting the gogo bundles on the classpath and running the framework,
 
 {{{
-java -cp target/de.kalpatec.pojosr.framework-0.1.0-SNAPSHOT.jar:/Users/pauls/.m2/repository/org/apache/felix/org.apache.felix.gogo.runtime/0.8.0/org.apache.felix.gogo.runtime-0.8.0.jar:/Users/pauls/.m2/repository/org/apache/felix/org.apache.felix.gogo.shell/0.8.0/org.apache.felix.gogo.shell-0.8.0.jar:/Users/pauls/.m2/repository/org/apache/felix/org.apache.felix.gogo.command/0.8.0/org.apache.felix.gogo.command-0.8.0.jar de.kalpatec.pojosr.framework.PojoSR
+java -cp target/de.kalpatec.pojosr.framework-0.1.0-SNAPSHOT.jar:org.apache.felix.gogo.runtime-0.8.0.jar:org.apache.felix.gogo.shell-0.8.0.jar:org.apache.felix.gogo.command-0.8.0.jar de.kalpatec.pojosr.framework.PojoSR
 ...
 Starting: org.apache.felix.gogo.runtime
 Starting: org.apache.felix.gogo.shell
@@ -108,3 +108,7 @@ g!
 The GAE doesn't allow threads so there is a property to deliver all events synchronous:
 
 -Dde.kalpatec.pojosr.framework.events.sync=true 
+
+= Services =
+
+There is a PackageAdmin and a StartLevel service but they don't do anything (just there because quite some interesting bundles have dependencies on them).
