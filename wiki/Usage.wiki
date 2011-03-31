@@ -49,7 +49,6 @@ Either use the PojoServiceRegistry with bundles form the classpath installed and
 {{{
 Map config = new HashMap();
 config.put(PojoServiceRegistryFactory.BUNDLE_DESCRIPTORS, new ClasspathScanner().scanForBundles());
-		new PojoServiceRegistryFactoryImpl().newPojoServiceRegistry(config);
 
 ServiceLoader<PojoServiceRegistryFactory> loader = ServiceLoader.load(PojoServiceRegistryFactory.class);
 
@@ -103,7 +102,7 @@ START LEVEL 1
 g! 
 }}}
 
-= GAE = 
+= GAE and other "no user thread" frameworks = 
 
 The GAE doesn't allow threads so there is a property to deliver all events synchronous:
 
@@ -111,4 +110,4 @@ The GAE doesn't allow threads so there is a property to deliver all events synch
 
 = Services =
 
-There is a PackageAdmin and a StartLevel service but they don't do anything (just there because quite some interesting bundles have dependencies on them).
+There is a PackageAdmin and a StartLevel service but they don't do anything (just published because quite some interesting bundles have dependencies on them).
